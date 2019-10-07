@@ -1,0 +1,35 @@
+.title {
+  color: #fff;
+  text-shadow: -1px -1px 1px #ededed, 1px 1px 1px #909090;
+  text-align: center;
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-top: 50px;
+  letter-spacing: .1em;
+}
+.todos {
+  width: 550px;
+  margin: 0 auto;
+  background: #fff;
+  position: relative;
+}
+.todos-input {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 16px 16px 16px 60px;
+  border: none;
+  font-style: italic;
+  outline: 0;
+  &::after {
+    left: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    display: block;
+    font-family: ipwa;
+    content: "";
+  }
+}

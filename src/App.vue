@@ -1,19 +1,27 @@
 <template>
   <div id="app">
-    <Home></Home>
+    <h1 class="title">todos</h1>
+    <section class="todos">
+      <Header></Header>
+      <Main></Main>
+      <Footer></Footer>
+    </section>
   </div>
 </template>
 
 <script>
-import Home from './components/Home';
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Main from './components/Main'
 export default {
-  name: 'app',
   components: {
-    Home
+    Header,
+    Footer,
+    Main
   }
-}
+};
 </script>
 
 <style lang="scss">
-  @import "./stylling/styles.scss";
+@import "./stylling/styles.scss";
 </style>
