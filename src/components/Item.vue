@@ -1,7 +1,7 @@
 <template>
-  <li class="todo-item">
-    <input type="checkbox" class="item-check" @change="updateSTT" :checked="ischecked">
-    <label for="" class="item-name">{{ data.name }}</label>
+  <li class="todo-item" @click="updateSTT">
+    <input type="checkbox" class="item-check" :checked="ischecked">
+    <label for="" class="item-name" :class="{ finished: ischecked }">{{ data.name }}</label>
     <button class="btn-delete" @click="removeItem">x</button>
   </li>
 </template>

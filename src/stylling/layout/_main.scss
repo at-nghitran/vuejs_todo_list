@@ -12,19 +12,44 @@
   list-style: none;
 }
 .todo-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding-right: 15px;
   border-bottom: 1px solid #f3f3f3;
   font-size: 15px;
   .btn-delete {
     color: #d9d9d9;
-    border: 0;
+    // border: 0;
     outline: 0;
+  }
+  .item-check {
+    border: none;
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    margin: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    &:checked {
+      &::after {
+        color: #7bb062;
+      }
+    }
+    &::after {
+      font-size: 2rem;
+      font-family: ipwa;
+      content: "";
+      color: #d9d9d9;
+    }
   }
   .item-name {
     white-space: pre-line;
+    margin-left: 45px;
     word-break: break-all;
     padding: 15px 60px 15px 15px;
     display: block;
@@ -32,5 +57,9 @@
     transition: color .4s;
     flex: 2;
     text-align: left;
+    &.finished {
+      text-decoration: line-through;
+      color: #d9d9d9
+    }
   }
 }
