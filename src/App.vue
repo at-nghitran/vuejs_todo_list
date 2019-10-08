@@ -4,7 +4,7 @@
     <section class="todos">
       <Header @sendItem="addItem"></Header>
       <Main :listItems="dataDisplay" @deleteItem="deleteItem" @updateStatus="updateStatus" @itemCheck="updateStatus"></Main>
-      <Footer :itemCount="itemCount" @filterData="filterData"></Footer>
+      <Footer :itemCount="itemCount" @filterData="filterData" @clearCompleted="clearCompleted" :isDisabled="isDisabled" :filterStatus="filterStatus"></Footer>
     </section>
   </div>
 </template>
@@ -25,7 +25,8 @@ export default {
       listItems: [],
       itemCount: 0,
       isCheck: false,
-      filterStatus: 'all'
+      filterStatus: 'all',
+      isDisabled: true,
     };
   },
   methods: {
@@ -59,6 +60,12 @@ export default {
         this.countItem();
         this.filterData(this.filterStatus)
       }
+      let listCompleted = this.listItems.filter(i => i.isActive);
+      if (listCompleted.length) {
+        this.isDisabled = false
+      } else {
+        this.isDisabled = true
+      }
     },
     itemCheck: function(id) {
       this.updateStatus(id);
@@ -71,9 +78,16 @@ export default {
         this.dataDisplay = this.listItems.filter(i => i.isActive);
         this.filterStatus = 'completed'
       } else {
-        this.dataDisplay = this.listItems;
+        this.dataDisplay = this.listItems
         this.filterStatus = 'all'
       }
+    },
+    clearCompleted: function() {
+      this.listItems = this.listItems.filter(i => {
+        return !i.isActive;
+      });
+      this.isDisabled = true
+      this.filterData('all')
     },
     countItem: function() {
       this.itemCount = this.listItems.filter(i => !i.isActive).length;
