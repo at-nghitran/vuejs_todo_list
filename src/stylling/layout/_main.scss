@@ -1,15 +1,36 @@
 .main-message {
   font-size: .875rem;
-  padding: 25px 15px;
   color: #909090;
   text-align: center;
-  &:before {
-    display: block;
-    font-size: 2.5rem;
+  .no-item {
+    padding: 15px 0;
+  }
+}
+.todo-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  border-bottom: 1px solid #f3f3f3;
+  font-size: 15px;
+  .btn-delete {
     color: #d9d9d9;
-    margin-bottom: 8px;
-    font-family: ipwa;
-    content: "";
-    padding-right: .5rem;
+    border: 0;
+    outline: 0;
+  }
+  .item-name {
+    white-space: pre-line;
+    word-break: break-all;
+    padding: 15px 60px 15px 15px;
+    display: block;
+    line-height: 1.2;
+    transition: color .4s;
+    flex: 2;
+    text-align: left;
   }
 }
