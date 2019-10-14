@@ -1,0 +1,14 @@
+.item-fade-enter-active {
+  transition: all 1s;
+}
+.item-fade-leave-active {
+  transition: all 1s;
+}
+.item-fade-enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.item-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
