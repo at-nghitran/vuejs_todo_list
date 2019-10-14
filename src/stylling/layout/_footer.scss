@@ -32,6 +32,7 @@
         @media (max-width: 768px) {
           text-align: center;
           font-size: 8px;
+          flex: 1 !important;
           .counter-number {
             font-size: 1rem;
           }
@@ -40,6 +41,9 @@
       &.cleaner {
         flex: 2 0!important;
         text-align: right;
+        @media (max-width: 768px) {
+          flex: 1 !important;
+        }
       }
       .btn-toolbar {
         border: 1px solid transparent;
@@ -68,6 +72,9 @@
         border-color: transparent;
         color: $gray-letter;
       }
+    }
+    @media (max-width: 768px) {
+      justify-content: space-between;
     }
   }
   @media (max-width: 768px) {

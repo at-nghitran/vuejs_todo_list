@@ -3,9 +3,19 @@
     <div class="main-message">
       <div v-if="!listItems.length" class="no-item">
         <p class="icon-file-text2"></p>
-        <p>You don't have any task!!!</p></div>
+        <p>You don't have any task!!!</p>
+      </div>
       <ul class="todo-list" v-else>
-        <Item v-for="item in listItems" :key="item.id" :data="item" @deleteItem="deleteItem" @updateStatus="updateStatus" @itemCheck="itemCheck"></Item>
+        <transition-group name="item-fade">
+          <Item
+            v-for="item in listItems"
+            :key="item.id"
+            :data="item"
+            @deleteItem="deleteItem"
+            @updateStatus="updateStatus"
+            @itemCheck="itemCheck"
+          ></Item>
+        </transition-group>
       </ul>
     </div>
   </section>
@@ -17,16 +27,16 @@ export default {
   components: {
     Item
   },
-  props: ['listItems'],
+  props: ["listItems"],
   methods: {
     deleteItem: function(id) {
-      this.$emit('deleteItem', id);
+      this.$emit("deleteItem", id);
     },
     updateStatus: function(id) {
-      this.$emit('updateStatus', id);
+      this.$emit("updateStatus", id);
     },
     itemCheck: function(isCheck) {
-      this.$emit('itemCheck', isCheck);
+      this.$emit("itemCheck", isCheck);
     }
   }
 };
