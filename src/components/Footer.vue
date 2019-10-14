@@ -57,7 +57,7 @@ export default {
       this.$emit('filterData', value);
     },
     clearCompleted: function() {
-      this.$emit("clearCompleted");
+      this.$emit('clearCompleted');
     }
   }
 };

@@ -15,22 +15,22 @@
 </template>
 <script>
 export default {
-  name: "Item",
-  props: ["data"],
+  name: 'Item',
+  props: ['data'],
   data: function() {
     return {
-      ischecked: this.data.isActive ? "no" : "yes",
+      ischecked: this.data.isActive ? 'no' : 'yes',
       isFinished: this.data.isActive
     };
   },
   methods: {
     removeItem: function() {
-      this.$emit("deleteItem", this.data.id);
+      this.$emit('deleteItem', this.data.id);
     },
     updateSTT: function() {
-      this.data.isActive = this.ischecked === "yes" ? true : false;
+      this.data.isActive = this.ischecked === 'yes' ? true : false;
       this.isFinished = this.data.isActive;
-      this.$emit("updateStatus", this.data);
+      this.$emit('updateStatus', this.data);
     }
   },
 };

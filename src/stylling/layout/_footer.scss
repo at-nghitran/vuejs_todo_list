@@ -2,7 +2,7 @@
   position: relative;
   padding: 10px 15px;
   height: 50px;
-  border-top: 1px solid #ededed;
+  border-top: 1px solid $light-shadow;
   display: flex;
   align-items: center;
   &::before {
@@ -32,7 +32,7 @@
         @media (max-width: 768px) {
           text-align: center;
           font-size: 8px;
-          flex: 1 0!important;
+          flex: 1 !important;
           .counter-number {
             font-size: 1rem;
           }
@@ -42,7 +42,7 @@
         flex: 2 0!important;
         text-align: right;
         @media (max-width: 768px) {
-          flex: 1 0!important;
+          flex: 1 !important;
         }
       }
       .btn-toolbar {
@@ -81,7 +81,7 @@
     }
   }
   @media (max-width: 768px) {
-    background: #fff;
+    background: $white;
     position: fixed;
     z-index: 2;
     bottom: 0;
