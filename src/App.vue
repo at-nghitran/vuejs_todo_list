@@ -64,6 +64,8 @@ export default {
             });
             if (that.filterStatus === "all") {
               that.dataDisplay = [...that.listItems];
+            } else {
+              that.filterData(that.filterStatus);
             }
           }
           that.countItem();
@@ -112,6 +114,7 @@ export default {
         });
     },
     filterData: function(value) {
+      this.getAllDataFromFB();
       if (value === "active") {
         this.dataDisplay = this.listItems.filter(i => i.isActive);
         this.filterStatus = "active";
@@ -154,7 +157,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-@import "./stylling/styles.scss";
-</style>

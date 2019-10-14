@@ -26,13 +26,24 @@
       position: relative;
       z-index: 1;
       &.counter {
-        color: #b7b7b7;
+        color: $gray-footer;
         flex: 2 0!important;
         text-align: left;
+        @media (max-width: 768px) {
+          text-align: center;
+          font-size: 8px;
+          flex: 1 0!important;
+          .counter-number {
+            font-size: 1rem;
+          }
+        }
       }
       &.cleaner {
         flex: 2 0!important;
         text-align: right;
+        @media (max-width: 768px) {
+          flex: 1 0!important;
+        }
       }
       .btn-toolbar {
         border: 1px solid transparent;
@@ -41,14 +52,41 @@
         outline: 0;
         color: inherit;
         &.active {
-          border-color: #7bb062;
+          border-color: $green;
+          @media (max-width: 768px) {
+            color: $green;
+          }
+        }
+        @media (max-width: 768px) {
+          font-size: 8px;
+          border: none;
+          color: $gray-footer;
+        }
+        .footer-icon {
+          font-size: 1rem;
         }
       }
       .btn-cleaner {
         border: 0;
         background-color: transparent;
         border-color: transparent;
+        color: $gray-letter;
+        &:disabled {
+          color: $light-shadow;
+        }
       }
     }
+    @media (max-width: 768px) {
+      justify-content: space-between;
+    }
+  }
+  @media (max-width: 768px) {
+    background: #fff;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    width: 100%;
+    padding: .5rem .9375rem;
+    height: auto;
   }
 }

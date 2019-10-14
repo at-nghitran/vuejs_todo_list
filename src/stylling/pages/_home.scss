@@ -1,6 +1,6 @@
 .title {
-  color: #fff;
-  text-shadow: -1px -1px 1px #ededed, 1px 1px 1px #909090;
+  color: $white;
+  text-shadow: -1px -1px 1px $light-shadow, 1px 1px 1px $grey-shadow;
   text-align: center;
   font-size: 36px;
   text-transform: uppercase;
@@ -8,33 +8,14 @@
   letter-spacing: .1em;
 }
 .todos {
-  max-width: 550px;
+  width: 550px;
   margin: 0 auto;
-  background: #fff;
+  background: $white;
   position: relative;
-}
-.todos-input {
-  position: relative;
-  margin: 0;
-  width: 100%;
-  font-size: 1.5rem;
-  padding: 16px 16px 16px 60px;
-  border: none;
-  font-style: italic;
-  outline: 0;
-  &::after {
-    left: 15px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.5rem;
-    display: block;
-    font-family: ipwa;
-    content: "\f107";
-  }
-}
-@media only screen and (max-width: 600px) {
-  .todos {
-    max-width: 100%;
+  border-left: 1px solid $gray-border;
+  border-right: 1px solid $gray-border;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
   }
 }
