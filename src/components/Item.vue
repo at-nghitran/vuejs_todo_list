@@ -1,8 +1,8 @@
 <template>
-  <li class="todo-item" @click="updateSTT">
-    <input type="checkbox" class="item-check" :checked="ischecked">
+  <li class="todo-item">
+    <input type="checkbox" class="item-check" :checked="ischecked" @change="updateSTT">
     <label for="" class="item-name" :class="{ finished: ischecked }">{{ data.name }}</label>
-    <button class="btn-delete" @click="removeItem">x</button>
+    <span class="icon-cross btn-delete" @click="removeItem"></span>
   </li>
 </template>
 <script>
