@@ -8,7 +8,7 @@
   letter-spacing: .1em;
 }
 .todos {
-  width: 550px;
+  max-width: 550px;
   margin: 0 auto;
   background: #fff;
   position: relative;
@@ -31,5 +31,10 @@
     display: block;
     font-family: ipwa;
     content: "\f107";
+  }
+}
+@media only screen and (max-width: 600px) {
+  .todos {
+    max-width: 100%;
   }
 }

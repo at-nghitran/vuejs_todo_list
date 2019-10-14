@@ -3,7 +3,7 @@
     <div class="main-message">
       <p v-if="!listItems.length" class="no-item">You don't have any task!!!</p>
       <ul class="todo-list" v-else>
-        <Item v-for="item in listItems" :key="item.id" :data="item" @deleteItem="deleteItem" @updateStatus="updateStatus" @itemCheck="itemCheck"></Item>
+        <Item v-for="item in listItems" :key="item.id" :data="item" @deleteItem="deleteItem" @updateStatus="updateStatus"></Item>
       </ul>
     </div>
   </section>
@@ -20,12 +20,9 @@ export default {
     deleteItem: function(id) {
       this.$emit('deleteItem', id);
     },
-    updateStatus: function(id) {
-      this.$emit('updateStatus', id);
+    updateStatus: function(todo) {
+      this.$emit('updateStatus', todo);
     },
-    itemCheck: function(isCheck) {
-      this.$emit('itemCheck', isCheck);
-    }
   }
 };
 </script>

@@ -22,14 +22,8 @@
 export default {
   name: 'Footer',
   props: ['itemCount', 'isDisabled', 'filterStatus'],
-  // data: function() {
-  //   return {
-  //     isActive: 'all'
-  //   }
-  // },
   methods: {
     filter: function(value) {
-      // this.isActive = value
       this.$emit('filterData', value);
     },
     clearCompleted: function() {
