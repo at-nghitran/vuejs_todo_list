@@ -95,7 +95,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-@import "./stylling/styles.scss";
-</style>

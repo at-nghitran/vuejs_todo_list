@@ -1,7 +1,7 @@
 <template>
   <div
     class="todos-header"
-  ><input type="text" class="todos-input" placeholder="What needs to be done?" @keyup.enter="inputItem" v-model="itemName"/></div>
+  ><input type="text" class="todos-input icon-cross" placeholder="What needs to be done?" @keyup.enter="inputItem" v-model="itemName"/></div>
 </template>
 <script>
 export default {
