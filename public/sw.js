@@ -1,8 +1,12 @@
 var cacheName = 'vuejs-todo-list-page';
 var filesToCache = [
     '/',
-    '/index.html',
-    '../src/stylling/styles.scss'
+    '/app.js',
+    '/icons/192.png',
+    '/icons/512.png',
+    '/icons/logo-2x.png',
+    '/favicon.ico',
+    '/manifest.json'
 ];
 self.addEventListener('install', function(e) {
     console.log('[ServiceWorker] Install');
