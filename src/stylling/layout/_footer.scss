@@ -74,7 +74,9 @@
         border: 0;
         background-color: transparent;
         border-color: transparent;
-        color: $gray-letter;
+        &:disabled {
+          color: $light-gray;
+        }
       }
     }
     @media (max-width: 768px) {

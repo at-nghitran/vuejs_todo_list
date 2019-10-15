@@ -38,7 +38,7 @@
         </button>
       </li>
       <li class="toolbar-item cleaner">
-        <button class="btn btn-toolbar btn-cleaner" @click="clearCompleted">
+        <button class="btn btn-toolbar btn-cleaner" @click="clearCompleted" :disabled="isDisabled">
           <div v-responsive.sm.xs class="footer-icon">
             <span class="icon-cross"></span>
           </div>Clear completed
