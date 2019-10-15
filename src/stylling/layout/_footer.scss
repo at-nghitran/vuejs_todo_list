@@ -58,6 +58,9 @@
             color: $green;
           }
         }
+        &:hover {
+          border-color: $green
+        }
         .footer-icon {
           font-size: 1rem;
         }
