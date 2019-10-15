@@ -26,7 +26,7 @@ export default {
   components: {
     Item
   },
-  props: ["listItems", "isLoading"],
+  props: ["listItems"],
   methods: {
     deleteItem: function(id) {
       this.$emit("deleteItem", id);

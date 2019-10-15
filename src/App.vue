@@ -3,7 +3,7 @@
     <h1 class="title">todos</h1>
     <section class="todos">
       <Header @sendItem="addItem"></Header>
-      <Main :listItems="dataDisplay" @deleteItem="deleteItem" @updateStatus="updateStatus" :isLoading="isLoading"></Main>
+      <Main :listItems="dataDisplay" @deleteItem="deleteItem" @updateStatus="updateStatus"></Main>
       <Footer
         :itemCount="itemCount"
         @filterData="filterData"
@@ -55,7 +55,6 @@ export default {
   methods: {
     getAllDataFromFB: function() {
       let that = this;
-      that.isLoading = true;
       db.get()
         .then(snapshot => {
           if (snapshot) {
