@@ -20,19 +20,19 @@
   </section>
 </template>
 <script>
-import Item from "./Item";
+import Item from './Item';
 export default {
-  name: "Main",
+  name: 'Main',
   components: {
     Item
   },
-  props: ["listItems"],
+  props: ['listItems'],
   methods: {
     deleteItem: function(id) {
-      this.$emit("deleteItem", id);
+      this.$emit('deleteItem', id);
     },
     updateStatus: function(todo) {
-      this.$emit("updateStatus", todo);
+      this.$emit('updateStatus', todo);
     }
   }
 };
