@@ -44,6 +44,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    outline: 0;
     &:checked {
       &::after {
         color: $green;

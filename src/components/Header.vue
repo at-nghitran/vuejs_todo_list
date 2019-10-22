@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "Header",
+  name: 'Header',
   data: function() {
     return {
       itemName: this.value

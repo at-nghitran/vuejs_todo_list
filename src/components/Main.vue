@@ -13,7 +13,6 @@
             :data="item"
             @deleteItem="deleteItem"
             @updateStatus="updateStatus"
-            @itemCheck="itemCheck"
           ></Item>
         </transition-group>
       </ul>
@@ -21,22 +20,19 @@
   </section>
 </template>
 <script>
-import Item from "./Item";
+import Item from './Item';
 export default {
-  name: "Main",
+  name: 'Main',
   components: {
     Item
   },
-  props: ["listItems"],
+  props: ['listItems'],
   methods: {
     deleteItem: function(id) {
-      this.$emit("deleteItem", id);
+      this.$emit('deleteItem', id);
     },
-    updateStatus: function(id) {
-      this.$emit("updateStatus", id);
-    },
-    itemCheck: function(isCheck) {
-      this.$emit("itemCheck", isCheck);
+    updateStatus: function(todo) {
+      this.$emit('updateStatus', todo);
     }
   }
 };

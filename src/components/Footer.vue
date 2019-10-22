@@ -50,14 +50,14 @@
 
 <script>
 export default {
-  name: "Footer",
-  props: ["itemCount", "isDisabled", "filterStatus"],
+  name: 'Footer',
+  props: ['itemCount', 'isDisabled', 'filterStatus'],
   methods: {
     filter: function(value) {
-      this.$emit("filterData", value);
+      this.$emit('filterData', value);
     },
     clearCompleted: function() {
-      this.$emit("clearCompleted");
+      this.$emit('clearCompleted');
     }
   }
 };
