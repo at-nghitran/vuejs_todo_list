@@ -12,19 +12,19 @@ const store = new Vuex.Store({
     isDisabled: true
   },
   mutations: {
-    countItem: function (state) {
+    countItem (state) {
       todoAPI.queryData('active').then((data) => {
         state.itemsLeft = data.length
       })
     },
-    getListItems: function (state) {
+    getListItems (state) {
       todoAPI.getListTodo().then((data) => {
         state.items = data
         this.commit('countItem')
         this.commit('checkDisabled')
       })
     },
-    fillter: function (state) {
+    fillter (state) {
       if (state.filterStatus != 'all') {
         todoAPI.queryData(state.filterStatus).then(data => {
           state.items = data
@@ -34,10 +34,10 @@ const store = new Vuex.Store({
         this.commit('getListItems')
       }
     },
-    updateStatus: function (state, status) {
+    updateStatus (state, status) {
       state.filterStatus = status
     },
-    checkDisabled: function (state) {
+    checkDisabled (state) {
       todoAPI.queryData('completed').then((data) => {
         state.isDisabled = data.length > 0 ? true : false
       })
