@@ -2,9 +2,9 @@
   <div class="todos-footer">
     <ul class="todos-footer-toolbar">
       <li class="toolbar-item counter">
-        <strong v-responsive.lg.xl.md>{{ itemCount }}</strong>
+        <strong v-responsive.lg.xl.md>{{ itemsLeft }}</strong>
         <div v-responsive.sm.xs class="counter-number">
-          <strong>{{ itemCount }}</strong>
+          <strong>{{ itemsLeft }}</strong>
         </div> item(s) left
       </li>
       <li class="toolbar-item">
@@ -38,7 +38,7 @@
         </button>
       </li>
       <li class="toolbar-item cleaner">
-        <button class="btn btn-toolbar btn-cleaner" @click="clearCompleted" :disabled="isDisabled">
+        <button class="btn btn-toolbar btn-cleaner" @click="clearCompleted" :disabled="!isDisabled">
           <div v-responsive.sm.xs class="footer-icon">
             <span class="icon-cross"></span>
           </div>Clear completed
@@ -49,15 +49,33 @@
 </template>
 
 <script>
+import todoAPI from '../services/todos'
 export default {
   name: 'Footer',
-  props: ['itemCount', 'isDisabled', 'filterStatus'],
+  mounted: function() {
+    this.$store.commit('countItem');
+  },
   methods: {
     filter: function(value) {
-      this.$emit('filterData', value);
+      this.$store.commit('updateStatus', value);
+      this.$store.commit('fillter', value);
     },
     clearCompleted: function() {
-      this.$emit('clearCompleted');
+      todoAPI.deleteAllCompleted().then(() => {
+        this.$store.commit('getListItems');
+        this.$store.commit('updateStatus', 'all');
+      });
+    }
+  },
+  computed: {
+    itemsLeft: function() {
+      return this.$store.getters.itemsLeft;
+    },
+    filterStatus: function() {
+      return this.$store.getters.filterStatus;
+    },
+    isDisabled: function() {
+      return this.$store.getters.isDisabled;
     }
   }
 };
