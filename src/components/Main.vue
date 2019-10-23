@@ -8,11 +8,9 @@
       <ul class="todo-list" v-else>
         <transition-group name="item-fade">
           <Item
-            v-for="item in listItems"
+            v-for="item in this.$store.state.items"
             :key="item.id"
             :data="item"
-            @deleteItem="deleteItem"
-            @updateStatus="updateStatus"
           ></Item>
         </transition-group>
       </ul>
@@ -21,19 +19,19 @@
 </template>
 <script>
 import Item from './Item';
+
 export default {
   name: 'Main',
   components: {
     Item
   },
-  props: ['listItems'],
-  methods: {
-    deleteItem: function(id) {
-      this.$emit('deleteItem', id);
+  mounted: function() {
+    this.$store.commit('getListItems');
+  },
+  computed: {
+    listItems: function() {
+      return this.$store.getters.items;
     },
-    updateStatus: function(todo) {
-      this.$emit('updateStatus', todo);
-    }
-  }
+  },
 };
 </script>

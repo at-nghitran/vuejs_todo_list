@@ -14,6 +14,7 @@
   </li>
 </template>
 <script>
+import todoAPI from '../services/todos';
 export default {
   name: 'Item',
   props: ['data'],
@@ -25,13 +26,31 @@ export default {
   },
   methods: {
     removeItem: function() {
-      this.$emit('deleteItem', this.data.id);
+      todoAPI.deletedTodo(this.data.id).then(() => {
+        this.reloadData();
+      });
+      this.$store.commit('countItem');
     },
     updateSTT: function() {
       this.data.isActive = this.ischecked === 'yes' ? true : false;
       this.isFinished = this.data.isActive;
-      this.$emit('updateStatus', this.data);
+      todoAPI.updateTodo(this.data).then((data) => {
+        this.$store.commit('countItem');
+        this.reloadData();
+      });
+    },
+    reloadData: function() {
+      if (this.filterStatus === 'all') {
+        this.$store.commit('getListItems');
+      } else {
+        this.$store.commit('fillter', this.filterStatus);
+      }
     }
   },
+  computed: {
+    filterStatus: function() {
+      return this.$store.getters.filterStatus;
+    }
+  }
 };
 </script>
