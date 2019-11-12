@@ -3,10 +3,6 @@ import db from '../configs/firebase'
 var accountCollection = 'accounts';
 var authAPI ={
   registerNewUser: function (params) {
-    // let item = {}
-    // item.email = params.email
-    // item.password = params.password
-    // item.name = params.name
     return db.collection(accountCollection).add(params).then(res => {
       return res
     })
