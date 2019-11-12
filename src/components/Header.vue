@@ -1,7 +1,7 @@
 <template>
-  <div
-    class="todos-header"
-  ><input type="text" class="todos-input icon-cross" placeholder="What needs to be done?" @keyup.enter="addItem" v-model="itemName"/></div>
+  <div class="todos-header">
+    <input type="text" class="todos-input icon-cross" placeholder="What needs to be done?" @keyup.enter="addItem" v-model="itemName"/>
+  </div>
 </template>
 <script>
 import todoAPI from '../services/todos';

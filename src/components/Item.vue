@@ -34,6 +34,7 @@ export default {
     updateSTT: function() {
       this.data.isActive = this.ischecked === 'yes' ? true : false;
       this.isFinished = this.data.isActive;
+      // eslint-disable-next-line
       todoAPI.updateTodo(this.data).then((data) => {
         this.$store.commit('countItem');
         this.reloadData();

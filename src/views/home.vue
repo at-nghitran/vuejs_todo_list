@@ -13,7 +13,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
-import todoAPI from '../services/todos';
+// import todoAPI from '../services/todos';
 
 export default {
   name: 'Home',
@@ -22,5 +22,10 @@ export default {
     Footer,
     Main
   },
+  mounted() {
+    if(localStorage.getItem('isLogin') != 'true') {
+      this.$router.push('/login')
+    }
+  }
 };
 </script>

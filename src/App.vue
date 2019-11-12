@@ -1,13 +1,21 @@
 <template>
   <div>
-    <Home></Home>
+    <router-view/>
   </div>
 </template>
 <script>
-import Home from './views/home'
+// import Home from './views/home'
 export default {
-  components: {
-    Home
+  // components: {
+  //   Home
+  // }
+  // data: function() {
+  //   return {
+  //     isLoggedIn: localStorage.getItem('isLogin') ? true : false
+  //   };
+  // }
+  mounted() {
+    localStorage.removeItem('isLogin')
   }
 }
 </script>

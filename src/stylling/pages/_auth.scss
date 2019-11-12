@@ -1,0 +1,40 @@
+.auth-wraper {
+    width: 550px;
+    // padding: 20px;
+    margin: 50px auto;
+    border: 1px solid $gray-border;
+    box-shadow: 0px 0px 5px 1px $gray-border;
+    .auth-header-wraper {
+        padding: 30px;
+        font-size: 25px;
+        background-color: $green;
+        color: $white;
+    }
+    .auth-form {
+        margin: 30px;
+    }
+    #email, #password, #name, #password-confirm{
+        width: 100%;
+        border-radius: 5px;
+        border: 2px solid $gray-border;
+        font-size: 20px;
+        outline: none;
+        background: none;
+        padding: 10px 20px;
+        margin: 20px 0 10px;
+        color: $gray-letter;
+    }
+    .auth-submit {
+        padding: 10px 30px;
+        font-size: 20px;
+        margin: 20px 0;
+        border-radius: 12px;
+        background-color: $green;
+        color: $white;
+    }
+    .direct-link {
+        margin-left: 20px;
+        color: $gray-letter;
+        font-size: 15px;
+    }
+}
