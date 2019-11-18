@@ -3,15 +3,7 @@
     <section class="todos">
       <div class="title-wraper">
         <h1 class="title">todos</h1>
-        <img class="user-img" src="" :alt="email"/>
-        <div class="side-bar">
-          <div class="user-image-wraper">
-            <img id="user-img" src="" :alt="email">
-          </div>
-          <div class="logout-wraper">
-            <button class="logout-button" @click="handleLogout">Sign out</button>
-          </div>
-        </div>
+        <img class="user-img" src="@/assets/logout.png" @click="handleLogout"/>
       </div>
       <Header></Header>
       <Main></Main>
@@ -29,7 +21,6 @@ import * as firebase from 'firebase';
 
 export default {
   name: 'Home',
-  props: ['email'],
   components: {
     Header,
     Footer,
@@ -38,8 +29,6 @@ export default {
   mounted() {
     if(!localStorage.getItem('USER')) {
       this.$router.push('/login')
-    } else {
-      this.email = JSON.parse(localStorage.getItem('USER')).email
     }
   },
   methods : {
@@ -48,6 +37,6 @@ export default {
       localStorage.clear();
       this.$router.push('/login')
     }
-  }
+  },
 };
 </script>

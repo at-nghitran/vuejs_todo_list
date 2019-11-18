@@ -13,7 +13,7 @@ export default {
     };
   },
   methods: {
-    addItem: function() {
+    addItem() {
       todoAPI.addNewTodo(this.itemName);
       this.$store.commit('countItem');
       if (this.filterStatus === 'all') {

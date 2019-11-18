@@ -1,8 +1,11 @@
 .title-wraper {
+  position: relative;
   .user-img {
+    width: 20px;
     position: absolute;
-    left: 10px;
-    top: 30px;
+    right: 10px;
+    top: 25px;
+    cursor: pointer;
     &:hover + .side-bar {
       width: 30%;
       visibility: visible;
@@ -15,14 +18,16 @@
     width: 0;
     z-index: 999;
     height: -webkit-fill-available;
-    background-color: $white;
-    transition: all ease-in-out 0.3s;
+    background-color: grey;
+    // transition: all ease-in-out 0.3s;
     text-align: center;
     &:hover{
       width: 30%;
       visibility: visible;
     }
     .user-image-wraper {
+      display: flex;
+      align-items: center;
       margin: 20px auto;
       border-bottom: 1px solid $gray-border;
     }
@@ -42,8 +47,6 @@
   margin: 0 auto;
   background: $white;
   position: relative;
-  border-left: 1px solid $gray-border;
-  border-right: 1px solid $gray-border;
   @media (max-width: 768px) {
     width: 100%;
   }

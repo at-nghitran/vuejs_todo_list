@@ -2,7 +2,7 @@ import db from '../configs/firebase'
 import firebase from 'firebase';
 
 var authAPI = {
-  registerNewUser: function (params) {
+  registerNewUser: async function (params) {
     return new Promise(async (resolve, reject) => {
       try {
         const data = await firebase.auth().createUserWithEmailAndPassword(params.email, params.password);
@@ -40,7 +40,6 @@ var authAPI = {
       localStorage.setItem('USER', JSON.stringify({ uid: res.user.uid, token: res.credential.accessToken, email: res.user.email }));
       return Promise.resolve(res.user.uid);
     } catch (error) {
-      console.log(error);
       return Promise.reject(error);
     }
   },
@@ -54,7 +53,6 @@ var authAPI = {
       localStorage.setItem('USER', JSON.stringify({ uid: res.user.uid, token: res.credential.accessToken, email: res.user.email }));
       return Promise.resolve(res.user.uid);
     } catch (error) {
-      console.log(error);
       return Promise.reject(error);
     }
   },
