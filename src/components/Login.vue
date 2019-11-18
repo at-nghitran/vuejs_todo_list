@@ -45,8 +45,7 @@ export default {
                 }
                 authAPI.login(params).then((res) => {
                     if(!res.empty){
-                        localStorage.setItem('isLogin', 'true')
-                        this.$router.push('/home')
+											this.$router.push('/home')
                     }
                     else
                     alert('password wrong!!')
@@ -55,34 +54,18 @@ export default {
             }
 				},
 				handleGoogleLogin() {
-					var provider = new firebase.auth.GoogleAuthProvider();
-					provider.addScope('profile');
-					provider.addScope('email');
-					firebase.auth().signInWithPopup(provider).then((result) => {
-						// This gives you a Google Access Token.
-						var token = result.credential.accessToken;
-						// The signed-in user info.
-						var user = result.user;
-						// console.log(user);
-						// user {displayName, email, photoURL}
-						localStorage.setItem('displayName', user.displayName)
-						localStorage.setItem('isLogin', 'true')
-						this.$router.push('/home');
-					});
+					authAPI.loginGoogle().then((res) => {
+						if(!res.empty){
+							this.$router.push('/home')
+						}
+					})
 				},
 				handleFacebookLogin() {
-					var provider = new firebase.auth.FacebookAuthProvider();
-					// provider.addScope('user_birthday');
-					firebase.auth().signInWithPopup(provider).then(function(result) {
-						// This gives you a Facebook Access Token.
-						var token = result.credential.accessToken;
-						// The signed-in user info.
-						var user = result.user;
-						console.log(user);
-						// localStorage.setItem('displayName', user.displayName)
-						localStorage.setItem('isLogin', 'true')
-						history.push('/home');
-					});
+					authAPI.loginFacebook().then((res) => {
+						if(!res.empty){
+							this.$router.push('/home')
+						}
+					})
 				}
     }
 }

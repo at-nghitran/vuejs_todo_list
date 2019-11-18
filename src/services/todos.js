@@ -4,7 +4,9 @@ import todoFunctions from '../functions/todos'
 var collection = 'todos';
 var todoAPI = {
   getListTodo: function () {
-    return db.collection(collection).get()
+    let user = JSON.parse(localStorage.getItem('USER'))
+    if (!user) return
+    return db.collection(collection).where('uid', '==', user.uid).get()
       .then(snapshot => {
         var dataList = []
         snapshot.forEach((todo) => {
@@ -19,6 +21,8 @@ var todoAPI = {
   },
   addNewTodo: function (name) {
     let item = {}
+    let user = JSON.parse(localStorage.getItem('USER'))
+    item.uid = user.uid
     item.name = name
     item.isActive = true
     return db.collection(collection).add(item).then(res => {
@@ -36,7 +40,9 @@ var todoAPI = {
       })
   },
   deleteAllCompleted: function () {
-    return db.collection(collection).where('isActive', '==', false).get()
+    let user = JSON.parse(localStorage.getItem('USER'))
+    return db.collection(collection).where('uid', '==', user.uid)
+      .where('isActive', '==', false).get()
       .then(function (querySnapshot) {
         // Once we get the results, begin a batch
         var batch = db.batch()
@@ -56,9 +62,11 @@ var todoAPI = {
       })
   },
   queryData: function (condition) {
+    let user = JSON.parse(localStorage.getItem('USER'))
     var qureyPram = condition === 'active' ? true : false
     var dataList = []
-    return db.collection(collection).where('isActive', '==', qureyPram)
+    return db.collection(collection).where('uid', '==', user.uid)
+      .where('isActive', '==', qureyPram)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach(function (doc) {

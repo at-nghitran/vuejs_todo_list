@@ -33,7 +33,6 @@
 import authAPI from '../services/auth';
 export default {
     name: 'Register',
-    props : ["nextUrl"],
     data(){
         return {
             name : "",
@@ -49,12 +48,11 @@ export default {
             if (this.email.length > 0 && this.password === this.password_confirmation && this.password.length > 0)
             {
                 let params = {
-                    name: this.name,
+                    displayName: this.name,
                     email: this.email,
                     password: this.password
                 }
                 authAPI.registerNewUser(params).then(() => {
-                    localStorage.setItem('isLogin', 'true')
                     this.$router.push('/home');
                 });
             } else {

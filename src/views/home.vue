@@ -3,10 +3,10 @@
     <section class="todos">
       <div class="title-wraper">
         <h1 class="title">todos</h1>
-        <img class="user-img" src="" :alt="userName"/>
+        <img class="user-img" src="" :alt="email"/>
         <div class="side-bar">
           <div class="user-image-wraper">
-            <img id="user-img" src="" :alt="userName">
+            <img id="user-img" src="" :alt="email">
           </div>
           <div class="logout-wraper">
             <button class="logout-button" @click="handleLogout">Sign out</button>
@@ -29,23 +29,23 @@ import * as firebase from 'firebase';
 
 export default {
   name: 'Home',
-  props: ['userName'],
+  props: ['email'],
   components: {
     Header,
     Footer,
     Main
   },
   mounted() {
-    if(localStorage.getItem('isLogin') != 'true') {
+    if(!localStorage.getItem('USER')) {
       this.$router.push('/login')
     } else {
-      this.userName = localStorage.getItem('displayName')
+      this.email = JSON.parse(localStorage.getItem('USER')).email
     }
   },
   methods : {
     handleLogout() {
       firebase.auth().signOut();
-      localStorage.removeItem("isLogin");
+      localStorage.clear();
       this.$router.push('/login')
     }
   }
