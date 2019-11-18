@@ -17,11 +17,16 @@
                 <router-link class="direct-link" to="/register">Sign up</router-link>
             </div>
         </form>
+				<div class="socail-wraper">
+					<button class="google-button"><img src="" alt="Google Login" @click="handleGoogleLogin"/></button>
+					<button class="facebook-button"><img src="" alt="Facebook Login" @click="handleFacebookLogin"/></button>
+				</div>
     </div>
     
 </template>
 <script>
 import authAPI from '../services/auth';
+import * as firebase from 'firebase';
 export default {
     name: 'Login',
     data(){
@@ -48,7 +53,37 @@ export default {
                     //clear
                 })
             }
-        }
+				},
+				handleGoogleLogin() {
+					var provider = new firebase.auth.GoogleAuthProvider();
+					provider.addScope('profile');
+					provider.addScope('email');
+					firebase.auth().signInWithPopup(provider).then((result) => {
+						// This gives you a Google Access Token.
+						var token = result.credential.accessToken;
+						// The signed-in user info.
+						var user = result.user;
+						// console.log(user);
+						// user {displayName, email, photoURL}
+						localStorage.setItem('displayName', user.displayName)
+						localStorage.setItem('isLogin', 'true')
+						this.$router.push('/home');
+					});
+				},
+				handleFacebookLogin() {
+					var provider = new firebase.auth.FacebookAuthProvider();
+					// provider.addScope('user_birthday');
+					firebase.auth().signInWithPopup(provider).then(function(result) {
+						// This gives you a Facebook Access Token.
+						var token = result.credential.accessToken;
+						// The signed-in user info.
+						var user = result.user;
+						console.log(user);
+						// localStorage.setItem('displayName', user.displayName)
+						localStorage.setItem('isLogin', 'true')
+						history.push('/home');
+					});
+				}
     }
 }
 </script>

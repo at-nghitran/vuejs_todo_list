@@ -1,3 +1,33 @@
+.title-wraper {
+  .user-img {
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    &:hover + .side-bar {
+      width: 30%;
+      visibility: visible;
+    }
+  }
+  .side-bar {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    width: 0;
+    z-index: 999;
+    height: -webkit-fill-available;
+    background-color: $white;
+    transition: all ease-in-out 0.3s;
+    text-align: center;
+    &:hover{
+      width: 30%;
+      visibility: visible;
+    }
+    .user-image-wraper {
+      margin: 20px auto;
+      border-bottom: 1px solid $gray-border;
+    }
+  }
+}
 .title {
   color: $white;
   text-shadow: -1px -1px 1px $light-shadow, 1px 1px 1px $grey-shadow;
